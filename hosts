@@ -1,0 +1,3 @@
+[target]
+192.168.124.100 ansible_ssh_user=cumulus ansible_ssh_pass=CumulusLinux! 
+192.168.124.101 ansible_ssh_user=cumulus ansible_ssh_pass=CumulusLinux!
