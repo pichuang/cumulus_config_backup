@@ -33,3 +33,16 @@
       with_items:
         - "/etc/passwd"
         - "/etc/shadow"
+
+    - name: Fetch Quagga Configuration
+      synchronize:
+        mode=pull
+        src=/etc/quagga
+        dest={{ BACKUP_ROOT_DIR }}/{{ ansible_hostname }}/etc
+
+    - name: Fetch MOTD file
+      fetch:
+        dest={{ BACKUP_ROOT_DIR }}/{{ ansible_hostname }}/etc/motd
+        src=/etc/motd
+        flat=yes
+
