@@ -1,5 +1,22 @@
 ---
 - hosts: all
+  vars_files:
+    - config
   tasks:
     - name: Ping all hosts
       ping:
+    - name: Fetch ports.conf
+      fetch:
+        dest=backup/{{ansible_hostname}}/etc/cumulus/ports.conf
+        src=/etc/cumulus/ports.conf
+        flat=yes
+    - name: Fetch Interfaces
+      fetch:
+        dest=backup/{{ansible_hostname}}/etc/network/interfaces
+        src=/etc/network/interfaces
+        flat=yes
+    - name: Fetch Timezone
+      fetch:
+        dest=backup/{{ansible_hostname}}/etc/timezone
+        src=/etc/timezone
+        flat=yes
