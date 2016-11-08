@@ -1,10 +1,10 @@
-CumulusLinux Config Backup
+CumulusLinux Config Export/Import
 ==========================
 
 Intoduction
 -----------
 
-Backup configuration of CumulusLinux Switch by Ansible
+Export/Import configuration of CumulusLinux Switch by Ansible
 
 Requirement
 -----------
@@ -13,8 +13,14 @@ Requirement
 
 Usage
 -----
+- For export:
 ```
-bash run_backup.sh
+bash run_export.sh
+```
+
+- For import:
+```
+bash run_import.sh
 ```
 
 ## Reference
