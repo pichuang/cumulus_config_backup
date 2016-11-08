@@ -5,7 +5,7 @@
 
 ## Usage
 ```
-ansible-playbook backup.yml -i hosts
+ansible-playbook backup.yml -i hosts -K
 ```
 
 ## Reference
