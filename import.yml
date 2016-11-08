@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars_files:
+    - config
+  tasks:
+    - name: Check All Hosts Alive
+      ping:
+
+    - name: Copy MOTD file
+      copy:
+        src={{ BACKUP_ROOT_DIR }}/{{ ansible_hostname }}/etc/motd
+        dest=/etc/motd
