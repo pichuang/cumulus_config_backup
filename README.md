@@ -1,11 +1,15 @@
 # Cumulus Config Backup
+## Intoduction
+
+Configuraiton backup solution of CumulusLinux Switch by Ansible
+
 ## Requirement
 - git
 - ansible
 
 ## Usage
 ```
-ansible-playbook backup.yml -i hosts -K
+bash run_backup.sh
 ```
 
 ## Reference
