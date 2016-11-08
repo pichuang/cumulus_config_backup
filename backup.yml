@@ -3,12 +3,12 @@
   vars_files:
     - config
   tasks:
-    - name: Ping all hosts
+    - name: Check All Hosts Alive
       ping:
 
     - name: Fetch Timezone
       fetch:
-        dest=backup/{{ansible_hostname}}/etc/timezone
+        dest={{ BACKUP_ROOT_DIR }}/{{ansible_hostname}}/etc/timezone
         src=/etc/timezone
         flat=yes
 
@@ -16,17 +16,17 @@
       synchronize:
         mode=pull
         src=/etc/cumulus
-        dest=backup/{{ ansible_hostname }}/etc
+        dest={{ BACKUP_ROOT_DIR }}/{{ ansible_hostname }}/etc
 
     - name: Fetch Network Configuration
       synchronize:
         mode=pull
         src=/etc/network
-        dest=backup/{{ ansible_hostname }}/etc
+        dest={{ BACKUP_ROOT_DIR }}/{{ ansible_hostname }}/etc
 
     - name: Fetch User Auth file
       fetch:
-        dest=backup/{{ ansible_hostname }}/{{ item }}
+        dest={{ BACKUP_ROOT_DIR }}/{{ ansible_hostname }}/{{ item }}
         src={{ item }}
         flat=yes
       become: true
