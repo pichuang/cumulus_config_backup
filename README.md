@@ -1,13 +1,18 @@
-# Cumulus Config Backup
-## Intoduction
+CumulusLinux Config Backup
+==========================
 
-Configuraiton backup solution of CumulusLinux Switch by Ansible
+Intoduction
+-----------
 
-## Requirement
+Backup configuration of CumulusLinux Switch by Ansible
+
+Requirement
+-----------
 - git
-- ansible
+- ansible ( > 2.0.0)
 
-## Usage
+Usage
+-----
 ```
 bash run_backup.sh
 ```
