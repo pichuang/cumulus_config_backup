@@ -8,4 +8,4 @@
 type ansible-playbook >/dev/null 2>&1 || { echo >&2 "Please install ansible first" ; exit 1; }
 
 # Run ansible-playbook
-ansible-playbook export.yml
+ansible-playbook import.yml

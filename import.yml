@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: tor-1.on.ec
   gather_facts: False
   roles:
-    - export
+    - import

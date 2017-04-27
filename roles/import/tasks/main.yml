@@ -1,0 +1,42 @@
+---
+- name: Import Timezone
+  copy:
+    dest: /etc/timezone
+    src: "{{ inventory_dir }}/conf/{{inventory_hostname}}/etc/timezone"
+  become: true
+
+#- name: Import CumulusLinux Configuration
+#  copy:
+#    src: /etc/cumulus
+#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+#    directory_mode: true
+
+#- name: Import Network Configuration
+#  copy:
+#    src: /etc/network
+#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+#    directory_mode: true
+
+- name: Import User Auth file
+  copy:
+    dest: "{{ item }}"
+    src: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/{{ item }}"
+  become: true
+  with_items:
+    - "/etc/passwd"
+    - "/etc/shadow"
+
+#XXX
+#- name: Import Quagga Configuration
+#  synchronize:
+#    src: /etc/quagga
+#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+#    mode: pull
+#    rsync_path: "sudo -u quagga rsync"
+
+- name: Import MOTD file
+  copy:
+    dest: /etc/motd
+    src: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/motd"
+  become: true
+

@@ -1,0 +1,48 @@
+---
+- name: Fetch Timezone
+  fetch:
+    src: /etc/timezone
+    dest: "{{ inventory_dir }}/conf/{{inventory_hostname}}/etc/timezone"
+    flat: yes
+    validate_checksum: yes
+
+- name: Fetch CumulusLinux Configuration
+  synchronize:
+    src: /etc/cumulus
+    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+    mode: pull
+    checksum: yes
+
+- name: Fetch Network Configuration
+  synchronize:
+    src: /etc/network
+    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+    mode: pull
+    checksum: yes
+
+- name: Fetch User Auth file
+  fetch:
+    src: "{{ item }}"
+    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/{{ item }}"
+    flat: yes
+    validate_checksum: yes
+  become: true
+  with_items:
+    - "/etc/passwd"
+    - "/etc/shadow"
+
+#XXX
+#- name: Fetch Quagga Configuration
+#  synchronize:
+#    src: /etc/quagga
+#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+#    mode: pull
+#    rsync_path: "sudo -u quagga rsync"
+
+- name: Fetch MOTD file
+  fetch:
+    src: /etc/motd
+    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/motd"
+    flat: yes
+    validate_checksum: yes
+
