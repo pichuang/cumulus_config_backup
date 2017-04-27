@@ -5,6 +5,11 @@ Intoduction
 -----------
 
 Export/Import configuration of CumulusLinux Switch by Ansible
+- Timezone
+- CumulusLinux Configuration
+- Network Configuration
+- User Auth File
+- MOTD File
 
 Requirement
 -----------

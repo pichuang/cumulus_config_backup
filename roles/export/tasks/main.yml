@@ -14,11 +14,11 @@
     checksum: yes
 
 - name: Fetch Network Configuration
-  synchronize:
-    src: /etc/network
-    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
-    mode: pull
-    checksum: yes
+  fetch:
+    src: /etc/network/interfaces
+    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/network/interfaces"
+    flat: yes
+    validate_checksum: yes
 
 - name: Fetch User Auth file
   fetch:

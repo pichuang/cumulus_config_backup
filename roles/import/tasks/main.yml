@@ -5,17 +5,15 @@
     src: "{{ inventory_dir }}/conf/{{inventory_hostname}}/etc/timezone"
   become: true
 
-#- name: Import CumulusLinux Configuration
-#  copy:
-#    src: /etc/cumulus
-#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
-#    directory_mode: true
+- name: Import CumulusLinux Configuration
+  copy:
+    dest: /etc/
+    src: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/cumulus"
 
-#- name: Import Network Configuration
-#  copy:
-#    src: /etc/network
-#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
-#    directory_mode: true
+- name: Import Network Configuration
+  copy:
+    dest: /etc/network/interfaces
+    src: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/network/interfaces"
 
 - name: Import User Auth file
   copy:
@@ -28,9 +26,9 @@
 
 #XXX
 #- name: Import Quagga Configuration
-#  synchronize:
-#    src: /etc/quagga
-#    dest: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
+#  copy:
+#    dest: /etc/quagga
+#    src: "{{ inventory_dir }}/conf/{{ inventory_hostname }}/etc/"
 #    mode: pull
 #    rsync_path: "sudo -u quagga rsync"
 
